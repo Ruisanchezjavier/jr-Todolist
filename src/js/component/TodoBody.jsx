@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "../../styles/TodoBody.css"
                         // display the tasks /
                         // each task will need a delete button /
@@ -19,10 +19,34 @@ import "../../styles/TodoBody.css"
 
 const TodoBody = ({todos, setTodos}) => {
 
+    //useEffect -> allows us to synchronize a component with an external system
+    // We can use useEffect to make a fetch call and retrieve our todo list
+
+    //useEffect has 2 parameters (callback function, dependency array)
+    // the callback function will be where we use our fetch call and process the response
+    //the dependency array is used to determine how the browser will rerender information
+
+    // useEffect(() => {
+    //      fetch('https://playground.4geeks.com/todo/users/Javi')
+    //      .then(response => response.json())
+    //      .then(data => {
+    //         setTodos(data.todos)
+    //      })
+    //      .catch(error => console.log('Error: ', error))
+
+         
+    // }, [])
+
+    // create a useEffect to Delete a task
+    
+
+
     const deleteTask = (selectedTodoId) => {
+
         // filter the todos and keep any todo that does not match the id
         // assign it to a new array variable
         // then we call setTodos to set the filtered array
+
         let updatedTodos = todos.filter(todo => todo.id !== selectedTodoId);
         setTodos(updatedTodos);
     }
